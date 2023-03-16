@@ -8,9 +8,10 @@ services:
       - LICENSE=accept
       - MQ_QMGR_NAME=QM1
     ports:
+      - '8161:8161'
       - '1414:1414'
       - '9443:9443'
-      - '61616:61616'
+      - '8091:61616'
     volumes:
       - ibmmq:/data/ibmmq
     container_name: ibmmq

@@ -1,0 +1,15 @@
+version: '2.1'
+
+services:
+  apachemq:
+    image: 'rmohr/activemq'
+    ports:
+      - '8161:8161'
+      - '8091:61616'
+    volumes:
+      - apachemq:/data/apachemq
+    container_name: apachemq
+
+volumes:
+  apachemq:
+    driver: local
