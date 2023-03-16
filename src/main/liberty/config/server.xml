@@ -9,7 +9,7 @@
         <!-- Rest Interface -->
         <feature>jaxrs-2.1</feature>
         <feature>jsonb-1.0</feature>
-        <feature>mpOpenAPI-1.0</feature>
+        <feature>mpOpenAPI-2.0</feature>
 
 
         <!-- Message Driven Bean -->
