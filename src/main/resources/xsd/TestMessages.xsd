@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="/jaxb/gen"
+        xmlns:userns="/jaxb/gen"
+        elementFormDefault="qualified">
+
+    <element name="TestInMessage">
+        <complexType>
+            <sequence>
+                <element name="account" type="string" />
+                <element name="amount" type="float" />
+            </sequence>
+        </complexType>
+    </element>
+
+
+
+    <element name="TestOutMessage">
+        <complexType>
+            <sequence>
+                <element name="account" type="string" />
+                <element name="total" type="float" />
+            </sequence>
+        </complexType>
+    </element>
+
+
+
+</schema>

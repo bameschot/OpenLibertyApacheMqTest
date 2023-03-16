@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<server description="test-server">
+
+    <featureManager>
+        <!-- Java EE features -->
+        <feature>cdi-2.0</feature>
+        <feature>ejb-3.2</feature>
+
+        <!-- Rest Interface -->
+        <feature>jaxrs-2.1</feature>
+        <feature>jsonb-1.0</feature>
+
+        <!-- Message Driven Bean -->
+        <feature>wasJmsClient-2.0</feature>
+        <feature>mdb-3.2</feature>
+    </featureManager>
+
+    <httpEndpoint httpPort="9080"
+                  httpsPort="9443"
+                  id="defaultHttpEndpoint"
+                  host="*"/>
+
+    <!-- JMS CONFIGURATION -->
+    <resourceAdapter id="ActiveMQResourceAdapter" location="${server.config.dir}/lib/activemq-rar-5.16.0.rar">
+        <properties.ActiveMQResourceAdapter ServerUrl="tcp://localhost:8091"
+                                            UserName="admin"
+                                            Password="admin"
+                                            />
+    </resourceAdapter>
+
+    <jmsQueueConnectionFactory jndiName="jms/queueCF"
+                               connectionManagerRef="ConMgr">
+        <properties.ActiveMQResourceAdapter/>
+    </jmsQueueConnectionFactory>
+
+    <connectionManager id="ConMgr" maxPoolSize="10"/>
+
+    <jmsQueue id="jms/test/in/queue"
+              jndiName="jms/test/in/queue">
+        <properties.ActiveMQResourceAdapter PhysicalName="q.test.in"/>
+    </jmsQueue>
+
+    <jmsQueue id="jms/test/out/queue"
+              jndiName="jms/test/out/queue">
+        <properties.ActiveMQResourceAdapter PhysicalName="q.test.out"/>
+    </jmsQueue>
+
+    <jmsActivationSpec id="open-Liberty-apache-mq-test/ReceiverInMDB">
+        <properties.ActiveMQResourceAdapter destinationType="javax.jms.Queue"
+                                            useJndi="true"
+                                            destination="jms/test/in/queue"/>
+    </jmsActivationSpec>
+
+
+</server>

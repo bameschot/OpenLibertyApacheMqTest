@@ -1,0 +1,20 @@
+version: '2.1'
+
+services:
+  ibmmq:
+    build: .
+    image: 'mq-test'
+    environment:
+      - LICENSE=accept
+      - MQ_QMGR_NAME=QM1
+    ports:
+      - '1414:1414'
+      - '9443:9443'
+      - '61616:61616'
+    volumes:
+      - ibmmq:/data/ibmmq
+    container_name: ibmmq
+
+volumes:
+  ibmmq:
+    driver: local
