@@ -1,2 +1,0 @@
-FROM docker.io/ibmcom/mq
-COPY qlocalconfig qlocalconfig

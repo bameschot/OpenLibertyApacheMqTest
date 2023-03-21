@@ -1,4 +1,0 @@
-define qlocal (MQCLIENT_MQ1.RESPONSE.FROM.MQSERVER_MQ1)
-define qlocal (MQCLIENT_MQ1.RESPONSE.FROM.MQSERVER_MQ2)
-define qlocal (Q.KITTY.IN)
-define qlocal (Q.KITTY.OUT)
